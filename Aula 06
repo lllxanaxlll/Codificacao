@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main () {
+
+    float notas;
+    float faltas;
+
+    printf("sua nota: ");
+    scanf("%d, &notas: ");
+    printf("sua faltas: ");
+    scanf("%d, &faltas: ");
+
+    if (notas <= 0 && faltas > 18 ) { 
+        printf("SR\n"); }
+    else if (notas >= 9 && faltas <= 18 ) { 
+        printf("SS\n"); }
+    else if (notas <= 7 && faltas <= 18 ) {
+        printf("MS\n"); }
+    else if (notas <=5  && faltas <= 18 ) {
+        printf("MM\n"); }
+    else if (notas <= 3 && faltas <= 18 ) {
+        printf("MI\n"); }
+    else if (notas <=1 && faltas <= 18 ) {
+        printf("II\n"); }
+
+    return 0;
+   
+    }
