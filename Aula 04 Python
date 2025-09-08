@@ -1,0 +1,15 @@
+     #definicao de valores
+
+valor_a = 0
+valor_b = 0
+valor_c = 0
+resultado = 0 
+
+valor_a = int( input("Digite o valor a:"))
+valor_b = int( input("Difite o valor b:"))
+valor_c = int( input("Digite o valor c:"))
+
+resultado = (valor_a + valor_b + valor_c) / 1 
+
+#Saida de valor
+print(f"Minha media e (resultado:. 1f)")
