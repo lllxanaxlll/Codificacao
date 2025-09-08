@@ -1,0 +1,30 @@
+ #include <stdio.h>
+
+    int main (){
+        
+       float nota_A, nota_B, media;
+       char opcao;
+
+       do { 
+            // perguntar notas
+            
+            printf("Digite a nota A: ");
+            scanf("%d", &nota_A);
+
+            printf("Digite a nota B: ");
+            scanf("%d", &nota_B);
+
+            // calcular media 
+
+            media = (nota_A + nota_B) / 2;
+            printf("A media e: ");
+
+            // perguntar se deseja calcular media novamente 
+            
+            printf ("Deseja calcular novamente");
+            scanf(opcao);
+
+       } while (opcao =='s' || opcao == 'n');
+       
+        return 0;
+    }
