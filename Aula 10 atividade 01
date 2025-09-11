@@ -1,0 +1,29 @@
+    #include <stdio.h>
+
+    int main() {
+        
+        int numeroSecreto, chute;
+
+        //pedir o numero secreto 
+            printf("Digite um numero interio (secreto): ");
+            scanf("%d", &numeroSecreto);
+
+            printf("\nAgora tente adivinhar o numero!\n");
+        //repetir até achar o numero secreto 
+            do {
+                printf("Digite seu chute: ");
+                scanf("%d", &chute);
+
+                if (chute > numeroSecreto) {
+                    printf("O numero secreto e maior que %d.\n", chute);
+                } else if (chute < numeroSecreto) {
+                    printf("O numero secreto e menor que %d.\n", chute);
+                } else {
+                    printf("Parabens! Voce acertou o numero %d!\n", numeroSecreto);
+                } 
+
+             } while (chute != numeroSecreto);
+        
+             return 0;
+    
+            }
