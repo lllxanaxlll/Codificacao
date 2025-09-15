@@ -1,0 +1,39 @@
+  #include <stdio.h>
+  int main () {
+    
+    int numero, quantidade = 0, maior, soma = 0;
+    float media;
+
+    printf("Digite uma sequencia de numeros inteiros (0 pra encerrar):\n");
+
+        while(1) {
+            printf ("Numero: ");
+            scanf("%d", &numero);
+
+            if (numero == 0) {
+                break; //encerra a leitura
+            }
+
+            if (quantidade == 0) {
+                // primeiro numero valido 
+                maior = numero;
+            }
+
+            quantidade++;
+            soma += numero;
+
+            if (numero > maior) {
+                maior = numero;
+            } 
+        }
+            if (quantidade > 0) {
+                media = (float)soma / quantidade;
+                printf("\nQuantidade de numeros lidos: %d\n", quantidade);
+                printf("Maior numero: %d\n", maior);
+                printf("Media aritmetica: %.2f\n", media);
+            } else {
+                printf("\nNenhum numero foi digitado.\n");
+            }
+       
+    return 0;
+  }
