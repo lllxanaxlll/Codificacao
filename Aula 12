@@ -1,0 +1,41 @@
+    #include <stdio.h>
+    int main () {
+        int numeros [10];
+        int i, j, aux;
+
+        //Entrada dos numeros 
+            printf ("Digite 10 numeros:\n");
+            for (i = 0; i < 9; i++)  {
+                printf("Numero %d: ", i + 1);
+                scanf("%d", &numeros [i]);
+            }
+
+            // Organização dos numeros 
+            for (i = 0; i < 9; i++)  {
+                    for (i = 0; i < 9 - i; j++)  {
+                        if (numeros[i] > numeros[j + 1]) {
+                            aux = numeros [j];
+                            numeros[j] = numeros [j + 1];
+                            numeros[j + 1 ] = aux;
+                        }
+                    }
+            }
+
+            //Saida dos numeros 
+            printf("\nNumeros ordenados do menos pro maior:\n");
+            for (i = 0; i < 10 )
+            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        return 0;
+    }
