@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+int main() {
+    int numeros[10];
+    int i, maior, menor, pares = 0, impares = 0, soma = 0;
+    int x, encontrado = 0;
+
+    // Leitura dos 10 números
+    printf("Digite 10 numeros inteiros:\n");
+    for (i = 0; i < 10; i++) {
+        printf("Numero %d: ", i + 1);
+        scanf("%d", &numeros[i]);
+        soma += numeros[i];
+
+        // Inicializar maior e menor no primeiro número
+        if (i == 0) {
+            maior = numeros[i];
+            menor = numeros[i];
+        }
+
+        // Atualizar maior e menor
+        if (numeros[i] > maior) {
+            maior = numeros[i];
+        }
+        if (numeros[i] < menor) {
+            menor = numeros[i];
+        }
+
+        // Contar pares e ímpares
+        if (numeros[i] % 2 == 0) {
+            pares++;
+        } else {
+            impares++;
+        }
+    }
+
+    // Exibir todos os números
+    printf("\nNumeros digitados: ");
+    for (i = 0; i < 10; i++) {
+        printf("%d ", numeros[i]);
+    }
+
+    // Exibir resultados
+    printf("\nMaior numero: %d", maior);
+    printf("\nMenor numero: %d", menor);
+    printf("\nQuantidade de pares: %d", pares);
+    printf("\nQuantidade de impares: %d", impares);
+    printf("\nMedia aritmetica: %.2f", soma / 10.0);
+
+    // Procurar o número X
+    printf("\n\nDigite um numero para procurar no vetor: ");
+    scanf("%d", &x);
+
+    for (i = 0; i < 10; i++) {
+        if (numeros[i] == x) {
+            printf("Numero %d encontrado na posicao %d (indice %d).\n", x, i + 1, i);
+            encontrado = 1;
+        }
+    }
+
+    if (!encontrado) {
+        printf("Numero %d nao foi encontrado no vetor.\n", x);
+    }
+
+    return 0;
+}
