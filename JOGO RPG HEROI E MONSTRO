@@ -1,0 +1,101 @@
+// jogo de rpg
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+            // Estrutura para armazenar os dados do personagem
+typedef struct {
+    int vida;
+    int ataque;
+    int defesa;
+    int pocao;
+} Personagem;
+
+            // Função para mostrar o status atual do herói e do monstro
+void mostrarStatus(Personagem heroi, Personagem monstro) {
+    printf("\n===== STATUS =====\n");
+    printf("Heroi - Vida: %d | Pocoes: %d\n", heroi.vida, heroi.pocao);
+    printf("Monstro - Vida: %d\n", monstro.vida);
+    printf("==================\n");
+}
+
+            // Função para o turno do heroi
+void turnoHeroi(Personagem *heroi, Personagem *monstro) {
+    int escolha;
+
+    printf("\nEscolha sua acao:\n");
+    printf("1 - Atacar\n");
+    printf("2 - Defender\n");
+    printf("3 - Usar Pocao (+20 de vida)\n");
+    printf("Escolha: ");
+    scanf("%d", &escolha);
+
+    switch (escolha) {
+        case 1:
+            printf("Voce atacou o monstro!\n");
+            monstro->vida -= heroi->ataque;
+            break;
+        case 2:
+            printf("Voce se defendeu! Reduzira o dano recebido no proximo ataque.\n");
+            heroi->defesa += 5;
+            break;
+        case 3:
+            if (heroi->pocao > 0) {
+                printf("Voce usou uma pocao e recuperou 20 de vida!\n");
+                heroi->vida += 20;
+                heroi->pocao--;
+            } else {
+                printf("Voce nao tem mais pocoes!\n");
+            }
+            break;
+        default:
+            printf("Acao invalida. Voce perdeu seu turno!\n");
+            break;
+    }
+}
+
+        // Função para o turno do monstro
+void turnoMonstro(Personagem *heroi, Personagem monstro) {
+    int dano = monstro.ataque - heroi->defesa;
+    if (dano < 0) dano = 0;
+
+    printf("O monstro atacou e causou %d de dano!\n", dano);
+    heroi->vida -= dano;
+
+                // Resetar defesa após o ataque
+    heroi->defesa = 0;
+}
+
+int main() {
+                // Inicializar os personagens
+    Personagem heroi = {100, 20, 0, 3};      // vida, ataque, defesa, poções
+    Personagem monstro = {80, 15, 0, 0};     // monstro nao usa pocoes
+
+    printf("=== BEM-VINDO AO RPG: A BATALHA FINAL ===\n");
+
+    // Loop principal do jogo (enquanto os dois estiverem vivos)
+    while (heroi.vida > 0 && monstro.vida > 0) {
+        mostrarStatus(heroi, monstro);
+        turnoHeroi(&heroi, &monstro);
+
+        // Verifica se o monstro foi derrotado
+        if (monstro.vida <= 0) {
+            printf("\nVoce derrotou o monstro! Vitoria!\n");
+            break;
+        }
+
+        // Turno do monstro
+        turnoMonstro(&heroi, monstro);
+
+        // Verifica se o heroi foi derrotado
+        if (heroi.vida <= 0) {
+            printf("\nVoce foi derrotado pelo monstro... Fim de jogo.\n");
+            break;
+        }
+    }
+
+    printf("\n=== FIM DO JOGO ===\n");
+
+    return 0;
+}
