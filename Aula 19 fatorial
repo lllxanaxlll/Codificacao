@@ -1,0 +1,35 @@
+    #include <stdio.h>
+    #include <locale.h>
+
+    int fatorialSemRecursao (int n) { 
+        int saida;
+        int resultado;
+        int fat = 1;
+        
+        if (n==0) {
+                saida = 1;
+        }   else{
+                
+                for (int i =  1; i <= n; i++) {
+                        resultado *= i; // multiplica o acumulador pelo valor atual de 
+                
+                }
+        }
+            return saida;
+    }
+
+    int main () {
+            system("chcp 65001 > nul");
+            setlocale(LC_ALL, "pt_BR.UTF-8");
+
+            int numero;
+            printf("Digite um numero para calcular o fatorial: ");
+            scanf("%d", &numero);
+
+            printf("O numero digitado foi %d \n", numero);
+            printf("o resultado do fatorial desse numero e %d \n", fatorialSemRecursao(numero));
+
+            return 0;
+
+    }
+    
