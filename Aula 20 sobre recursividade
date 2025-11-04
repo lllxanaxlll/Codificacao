@@ -1,0 +1,28 @@
+#include <stdio.h>
+int main (){
+    
+    // 1- Potencia sem usar pow ()) - funçao recursiva simples 
+    // Implementar uma função recursiva que calcule o resultado de base expoente 
+    
+    double base, resultado = 1;       //oque seria double base 
+    int expoente;
+
+    printf("Digite o valor da base: ");
+    scanf("%lf", &base);                        // pra que serve %lf 
+                                                // e o simbolo &                // pra que eu usaria a função recursiva em um códdigo
+    printf("Digite o valor do expoente: ");
+    scanf("%d", &expoente);                     // pra que serve o %d
+
+    if (expoente < 0) {
+        base = 1 / base;          // pra que serve o "/"
+        expoente = -expoente;       // expoente = -expoente ??????
+    }
+
+    for (int i = 0; i < expoente; i ++ ) {  // pra que serve i ++
+        resultado *= base;
+        }    
+
+        printf("%.2lf elevado a %d e %.2lf\n", base, expoente, resultado);
+
+    return 0;
+}
