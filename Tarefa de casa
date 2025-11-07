@@ -1,0 +1,29 @@
+        #include <stdio.h> 
+        #include <locale.h>
+
+           typedef struct { 
+            char nome [4][100];
+            int ano_nascimento[4];
+            char sexo[4];
+            double altura[4];
+            double peso[4];
+            int cpf[4];
+            float;  
+
+           }pessoa ;
+
+           int main () {
+                system("chcp 65001 > nul");
+                setlocale(LC_ALL, "pt_BR.UTF-8");
+            
+            pessoa p1 = {"Vitor Oliveira de Souza" ,2003, 'M', 1.65, 59.0, 65464644684};
+
+            printf ("O nome da pessoa e %s\n", p1.nome);
+            printf ("O ano de nascimento %d\n", p1.altura);
+            printf ("O ano de nascimento %c\n", p1.ano_nascimento);
+            printf ("O ano de nascimento %d\n", p1.cpf);
+            printf ("O ano de nascimento %d\n", p1.peso);
+            printf ("O ano de nascimento %d\n", p1.sexo);
+
+            return 0;
+        }
