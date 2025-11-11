@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Definição da struct Pessoa
+typedef struct {
+    char nome[50];
+    int idade;
+    char cidade[50];
+} Pessoa;
+
+// Protótipos das funções
+void cadastrar();
+void listar();
+
+int main() {
+    int opcao;
+
+    do {
+        printf("\n=== MENU ===\n");
+        printf("1 - Cadastrar pessoa\n");
+        printf("2 - Listar pessoas\n");
+        printf("3 - Sair\n");
+        printf("Escolha uma opcao: ");
+        scanf("%d", &opcao);
+        getchar(); // limpa o buffer do teclado
+
+        switch (opcao) {
+            case 1:
+                cadastrar();
+                break;
+            case 2:
+                listar();
+                break;
+            case 3:
+                printf("Encerrando o programa...\n");
+                break;
+            default:
+                printf("Opcao invalida!\n");
+        }
+    } while (opcao != 3);
+
+    return 0;
+}
+
+// Função para cadastrar uma pessoa
+void cadastrar() {
+    Pessoa p;
+    FILE *arquivo;
+
+    printf("\n=== Cadastrar Pessoa ===\n");
+    printf("Nome: ");
+    fgets(p.nome, sizeof(p.nome), stdin);
+    p.nome[strcspn(p.nome, "\n")] = '\0'; // remove o \n
+
+    printf("Idade: ");
+    scanf("%d", &p.idade);
+    getchar(); // limpa o \n que fica no buffer
+
+    printf("Cidade: ");
+    fgets(p.cidade, sizeof(p.cidade), stdin);
+    p.cidade[strcspn(p.cidade, "\n")] = '\0';
+
+    // Abre o arquivo em modo binário de adição
+    arquivo = fopen("pessoas.dat", "ab");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo!\n");
+        return;
+    }
+
+    // Escreve a struct no final do arquivo
+    fwrite(&p, sizeof(Pessoa), 1, arquivo);
+    fclose(arquivo);
+
+    printf("Pessoa cadastrada com sucesso!\n");
+}
+
+// Função para listar todas as pessoas cadastradas
+void listar() {
+    Pessoa p;
+    FILE *arquivo;
+
+    arquivo = fopen("pessoas.dat", "rb");
+    if (arquivo == NULL) {
+        printf("Nenhum cadastro encontrado (arquivo inexistente ou vazio).\n");
+        return;
+    }
+
+    printf("\n=== Lista de Pessoas ===\n");
+    while (fread(&p, sizeof(Pessoa), 1, arquivo) == 1) {
+        printf("Nome: %s\n", p.nome);
+        printf("Idade: %d\n", p.idade);
+        printf("Cidade: %s\n", p.cidade);
+        printf("----------------------\n");
+    }
+
+    fclose(arquivo);
+}
