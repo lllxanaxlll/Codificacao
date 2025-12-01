@@ -1,4 +1,6 @@
-    #include <stdio.h>
+//Ordenação de numeros 
+
+#include <stdio.h>
     int main () {
         int numeros [10];
         int i, j, aux;
