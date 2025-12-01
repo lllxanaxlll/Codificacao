@@ -1,4 +1,6 @@
-    #include <stdio.h>
+// Jogo de adivinhação
+
+#include <stdio.h>
 
     int main() {
         
