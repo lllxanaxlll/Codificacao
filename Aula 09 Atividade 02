@@ -1,4 +1,6 @@
-    #include <stdio.h>
+// Classificação de idades 
+
+#include <stdio.h>
         int main () {
 
         int idade;
