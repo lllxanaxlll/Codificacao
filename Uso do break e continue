@@ -1,0 +1,22 @@
+// Uso do comando break e continue
+
+#include <stdio.h>
+
+int main() {
+    int num;
+
+    printf("Digite numeros inteiros (0 para parar):\n");
+
+    while (1) {  // loop 8
+        scanf("%d", &num);
+
+        if (num == 0) {
+            printf("Programa encerrado.\n");
+            break;  // x 8
+        }
+
+        printf("Voce digitou: %d\n", num);
+    }
+
+    return 0;
+}
